@@ -1,0 +1,28 @@
+//
+//  main.c
+//  exec01
+//
+//  Created by Lukas Kvak on 21/09/2021.
+//
+//
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main()
+{
+    //using the ascii table to display gaved string 
+    int chr = 34;
+    int bc = 92;
+    int sl = 47;
+    int star = 42;
+    unsigned char i = chr;
+    unsigned char TIA[] = "This is a";
+    unsigned char B[] = "backslash";
+    unsigned char BCKS = bc;
+    unsigned char ST = star;
+    unsigned char SL = sl;
+    printf("%c%c%c%s %c%s%c:'\\'%c%c%c\n",BCKS,ST,SL,TIA,i,B,i,BCKS,ST,SL);
+
+    return 0;
+}
