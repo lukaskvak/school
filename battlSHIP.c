@@ -5,10 +5,9 @@
 #include  <time.h>
 
 #define SIZE 10	/* constant for size of game board */
-
 /* function prototypes */
 
-void displayhit(int **board, int FHITR,int FHITC);
+void displayhit(int **board);
 void printGridRow(int i);
 void dispGrid(int **board);
 int assignShip(int **board, int shipType);
@@ -59,13 +58,13 @@ int main(void)
         {
                 validLoc = assignShip(board, 4);//B
         }
-validLoc = 0;
+                validLoc = 0;
 	  /* repeatedly attempt to assign aircraft carrier until successful */
         while (!validLoc)
         {
                 validLoc = assignShip(board, 5); //A
         }
- validLoc = 0;
+        validLoc = 0;
             while (!validLoc)
         {
                 validLoc = assignShip(board, 3);
@@ -76,14 +75,15 @@ validLoc = 0;
 
        
           /* call function to display board with ships assigned */	
-      
-        
+      dispGrid(board);
+      printf("Give me the coords. for the hit: ");
+      scanf("%c%d",&roww,&colm);
+      int colmm = colm - 1;        
        switch (roww){
 
 case 'A':
 HITC = 0 ;
-
-    break;
+break;
 case 'B':
 HITC = 1 ; 
     break;
@@ -117,34 +117,28 @@ default: printf("you have entered wrong coords...");
 
 }
   
-  
+  printf("%d%d",HITC,colmm);
     
-   displayhit(board,HITC,colm); 
+  if(board[HITC][colmm] == 3 || board[HITC][colmm] == 4 || board[HITC][colmm] == 5){
+          board[HITC][colmm] += 10;
+         dispGrid(board);
+        
+  }
     
 
 
-     dispGrid(board);
+     
   
         return 0;
 }
-void displayhit(int **board, int FHITR,int FHITC){
-     printf("Please enter spot to hit e.g A4: \n");
-        scanf("%c",&roww);
-        scanf("%d",&colm);
-    for(int i = 0;i < FHITR;i++){
-        for(int j = 0;j<FHITC;j++){
-            printf("%d",board[i][j]);
-        }
-    }
-        
-        
-        
-    }
 
+        
+        
+    
 
 void printGridRow(int i)
 {
-	  /* based on row integer passed, print out corresponding row letter of board */
+	  /* based on row integer passed, print out corresponding row letter of board 
         switch (i)
         {
         case 0: printf("A| ");
@@ -170,6 +164,9 @@ void printGridRow(int i)
         default:printf("Unknown grid row value: %d. Program terminating.\n", i);
                 exit(1);
         }
+        */
+
+      printf("%c|",'A'+i);  
 }
 
 
@@ -191,23 +188,36 @@ void dispGrid(int **board)
                 {
                         switch (board[i][j])
                         {
-                        case 0: /* print blank space for open/unassigned location */
+                         case 0: /* print blank space for open/unassigned location */
                                 printf("?");
                                  break;
 
 
-                         case 3: printf("D");  /* print 'B' for assigned battleship */
+                         case 3: printf("?");  /* print d destroyer */
                                 break;
 
 
-                        case 4: /* print 'B' for assigned battleship */
+                         case 4: /* print 'B' for assigned battleship */
+                                printf("?");
+                                    
+                                 break;
+                         case 5: /* print 'A' for assigned aircraft carrier */
+                                 printf("?");
+                                
+                                 break;
+
+                        case 13: printf("D");  /* print d destroyer */
+                                break;
+
+
+                         case 14: /* print 'B' for assigned battleship */
                                 printf("B");
                                     
                                  break;
-                        case 5: /* print 'A' for assigned aircraft carrier */
+                         case 15: /* print 'A' for assigned aircraft carrier */
                                  printf("A");
                                 
-                                 break;
+                                 break;       
                         default:/* should never get here, but handle error case by terminating program gracefully */
                                 printf("Unknown value for board[%d][%d] : %3d. Terminating program.\n", i, j, board[i][j]);
                                 exit(1);
