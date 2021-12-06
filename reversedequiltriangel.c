@@ -16,8 +16,7 @@ Write a C program to print reverse Pyramid or reverse equilateral triangle made 
 #include<stdlib.h>
 
 int main(void){
-int i,j;
-int height;
+int height,i,j;
 printf("please enter the height: \n");
 scanf("%d",&height);
 printf("\n================================\n");
