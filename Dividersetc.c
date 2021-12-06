@@ -21,17 +21,17 @@ printf("|-------------------------------|");
 printf("\n|CF:");
 if(n1<n2||n1==n2){n3=n1;}if(n2<n1||n2==n1){n3=n2;}
                                                 
-for(int i=0;i<=n3;i++){if(n1%i==0 && n2%i==0){printf("   %d",i);}}
+for(int i=0;i<=n3;i++){if(n1%i==0 && n2%i==0){printf("%5d",i);}}
     
     printf("\n|-------------------------------|");
     printf("\n|%d:  ",n1);
     for(j=0;j<=n1;j++){
-        if(n1%j==0){printf(" %d",j);}
+        if(n1%j==0){printf("%3d",j);}
                       }
     printf("\n|-------------------------------|");                             
     printf("\n|%d:  ",n2);
     for(j=0;j<=n2;j++){
-        if(n2%j==0){printf(" %d",j);}
+        if(n2%j==0){printf("%3d",j);}
                       }           
     printf("\n|-------------------------------|");
 return 0;
